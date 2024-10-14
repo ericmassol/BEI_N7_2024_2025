@@ -2,7 +2,7 @@
 
 ## Présentation des participants impliqués sur le projet
 
-_Référents CNES_ : 
+_Référents_ : 
 - Frédéri Mirc (côté CNES)
 - Mme Ngueuveu (côté ENSEEIHT)
 
