@@ -1,0 +1,51 @@
+BEI Presentation
+---------------
+
+EasyMile
+--------
+
+- ajoute capteur, ECU et logiciel et rend autonome le véhicule
+
+- transport de passage (Campus Paul Sab jusqu'a recemment) et transport de marchandise (transport aéroports, ...) et plus gros transport logistique (camion pour ports, ...)
+
+- Niveau interaction :
+- Alice Couprie (Lead Tech)
+- Romaine Dupont (Safety)
+- Damien Verdier (Architecte)
+- Lucas Veit (Dev navigation)
+- Ronan Keane (Dev navigation)
+
+- Controle latéral : commande l'angle de braquage des roues directrices
+(maintien véhicule dans sa voie, éviter obstacle, ...)
+
+- Objectif : 
+Analyse de risque sur controle latéral
+Protoypage de fonction de sécurité dans un simulateur (développé l'an dernier)
+Analyse, étude controleurs latéraux, ...
+Modélisation : jusqu'à présent que cinématique donc ajouter dynamique
+Simulateur : Dev en Python (archi nouvelles fonctions et code)
+
+- Sureté de fonctionnement
+- identifier les risques
+- supprimer les causes possibles ou développer des moyens de mitigation (faire en sorte arrive à fréquence acceptable : n'écrase pas trop souvent les piétons)
+- Evaluer de nouveau le risque résiduel
+
+- Méthodes d'analyse
+- PHA
+- HARA / FHA
+-> Montrer lien avec fn de sécurité développée donc méthode au choix (sur GSheet/GDoc)
+
+- Mitigation portée par fn hard/software :
+Niveau d'intégrité dépendant de la criticité 
+Standards ISO 26262, ASIL, ...
+
+- Nombreuses hypothèses simplif : environnement connu, réponse véhicule prévisible, conduite nominale, ...
+
+- Leur dire en amont si possible pourquoi on a besoin d'eux
+
+
+
+
+
+
+
