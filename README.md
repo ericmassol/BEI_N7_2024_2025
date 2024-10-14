@@ -27,7 +27,7 @@ Software :
 - Interfaces simulées (IP, RS232, ...)
 
 Hardware :
-- LOLIN32 lite (type ESP32)
+- [LOLIN32 lite](https://done.land/components/microcontroller/families/esp/esp32/classicesp32/lolin32lite) (basée ESP32)
 - Capteur de pression (voir référence)
 - Capteur de position GPS
 - LED rouge (pour simuler cisaille pyrotechnique - celle interne à la carte ?)
