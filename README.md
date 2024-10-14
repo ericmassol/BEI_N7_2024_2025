@@ -32,3 +32,7 @@ Hardware :
 - Capteur de position GPS
 - LED rouge (pour simuler cisaille pyrotechnique)
 - autre ? (à définir)
+
+  ## Bibliographe et sources
+
+  _Ajouter ici les sites de références (code, doc, ...) utiles, utilisés et/ou utilisables pour le projet._
