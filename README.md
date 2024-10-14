@@ -23,7 +23,7 @@ Notre mission est donc de développer ce système embarqué critique de façon �
 ## Software et Hardware utilisé
 
 Software :
-- PlateformIO (IDE)
+- [PlateformIO (IDE)](https://docs.platformio.org/en/latest/integration/ide/vscode.html#quick-start)
 - Interfaces simulées (IP, RS232, ...)
 
 Hardware :
