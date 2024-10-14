@@ -27,11 +27,11 @@ Software :
 - Interfaces simulées (IP, RS232, ...)
 
 Hardware :
-- [LOLIN32 lite](https://done.land/components/microcontroller/families/esp/esp32/classicesp32/lolin32lite) (basée ESP32)
-- Capteur de pression (voir référence)
-- Capteur de position GPS
-- LED rouge (pour simuler cisaille pyrotechnique - celle interne à la carte ?)
-- autre ? (à définir)
+- [LOLIN32 lite](https://done.land/components/microcontroller/families/esp/esp32/classicesp32/lolin32lite) : Microcontrôleur basé sur l'ESP32, utilisé pour la gestion du système embarqué.
+- Capteur de pression : Pour mesurer la pression atmosphérique et déclencher le déventement.
+- Capteur GPS : Pour suivre la position de la charge utile.
+- LED Rouge : Utilisée pour simuler la cisaille pyrotechnique.
+- Autres composants à définir selon l'évolution des besoins du projet. 
 
 ## Bibliographe et sources
 
