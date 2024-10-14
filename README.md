@@ -1,4 +1,6 @@
-# BEI N7 - Déventement du parachute d'un aérostat du CNES (2024/2025)
+# BEI N7 - Déventement du parachute d'un aérostat du CNES
+
+_Projet courant du 14/10/2024 au 31/01/25_
 
 ## Présentation des participants impliqués sur le projet
 
