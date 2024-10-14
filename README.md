@@ -30,7 +30,7 @@ Hardware :
 - LOLIN32 lite (type ESP32)
 - Capteur de pression (voir référence)
 - Capteur de position GPS
-- LED rouge (pour simuler cisaille pyrotechnique)
+- LED rouge (pour simuler cisaille pyrotechnique - celle interne à la carte ?)
 - autre ? (à définir)
 
 ## Bibliographe et sources
