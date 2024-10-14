@@ -35,5 +35,13 @@ Lancement auxiliaire pour eux (ballons secondaires pour safety) VS lancement à 
 	- Récepteur GPS + capteur de pression -> peut proposer d'autres entrées pour le projet
 	- Contraintes qualité non applicables
 	- I2C aussi pour les capteurs donnés
+	- Langage C/C++ (type Arduino) - voir exemple fourni
+
+- Configurer IO, périphs (classique et bcp exemples simples existants pour Arduino)
 
 - Certaines contraintes de rendus sont déjà en place (4, 5 et 8 semaines au moins)
+	- Architecture de bord attendue à 4semaines
+	- Analyse défaillance attendue à 5semaines
+	- Prototypage attendu à 8semaines
+
+Partie implem, architecture, ...
