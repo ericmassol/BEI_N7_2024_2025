@@ -11,7 +11,7 @@ _Référents_ :
 _Etudiants_ : 
 - Alexandre PAUL (référent communication N7/CNES)
 - Philippe CASTERES (référent technique)
-- Eric MASSOL
+- Eric MASSOL (Partie logicielle)
 - Loïc BARTHE
 
 ## Présentation du projet
@@ -31,7 +31,22 @@ Hardware :
 - Capteur de pression : Pour mesurer la pression atmosphérique et déclencher le déventement.
 - Capteur GPS : Pour suivre la position de la charge utile.
 - LED Rouge : Utilisée pour simuler la cisaille pyrotechnique.
-- Autres composants à définir selon l'évolution des besoins du projet. 
+- Autres composants à définir selon l'évolution des besoins du projet.
+
+## Découpe potentielle
+
+### Phase 1 : Recherche et analyse (Semaine 1-2)
+- Analyse des spécifications CNES
+- Étude des contraintes techniques (robustesse aux pannes, ...)
+- Prise en main de PlatformIO (rapide)
+
+### Phase 2 : Conception de l'architecture (Semaine 3-4)
+- Conception de l'architecture matérielle (choix des composants, ports, ...)
+- Conception de l'architecture logicielle
+
+**Livrables** : Schémas d'architecture (Fritzing, diagrammes UML, ...)
+
+_Voir pour les prochaines étapes (mais déjà valider les précédentes)._
 
 ## Bibliographe et sources
 
