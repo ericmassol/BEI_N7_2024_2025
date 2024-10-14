@@ -16,9 +16,9 @@ _Etudiants_ :
 
 ## Présentation du projet
 
-Dans le cadre des missions ballons du CNES, ils ont un besoin de développer un système embarqué permettant de déventer le parachute auxiliaire accroché à la charge utile une fois qu'il a attérrit pour éviter des dommages sur les équipements (coûteux). 
+Dans le cadre des missions aérostatiques du CNES, notre projet consiste à développer un **système embarqué critique** pour gérer le déventement du parachute auxiliaire attaché à la charge utile après l'atterrissage. Ce système vise à éviter les dommages potentiels sur les équipements sensibles et coûteux en cas de traînée au sol.
 
-Notre mission est donc de développer ce système embarqué critique de façon à ce qu'il soit robuste à la panne avance (toute défaillance du système ne doit pas entrainer de catastrophe) et non robuste à la panne retard (un retard de déventement ne doit pas déclencher de catastrophe). 
+L'objectif principal est de concevoir un **système robuste à la panne avancée**, c'est-à-dire capable de prévenir tout incident grave en cas de défaillance du système. Par contre, le système **ne doit pas être robuste à la panne retardée**, car un retard dans le déventement ne devra pas engendrer de conséquence catastrophique.
 
 ## Software et Hardware utilisé
 
