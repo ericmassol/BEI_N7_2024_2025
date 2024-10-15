@@ -33,21 +33,6 @@ Hardware :
 - LED Rouge : Utilisée pour simuler la cisaille pyrotechnique.
 - Autres composants à définir selon l'évolution des besoins du projet.
 
-## Découpe potentielle
-
-### Phase 1 : Recherche et analyse (Semaine 1-2)
-- Analyse des spécifications CNES
-- Étude des contraintes techniques (robustesse aux pannes, ...)
-- Prise en main de PlatformIO (rapide)
-
-### Phase 2 : Conception de l'architecture (Semaine 3-4)
-- Conception de l'architecture matérielle (choix des composants, ports, ...)
-- Conception de l'architecture logicielle
-
-**Livrables** : Schémas d'architecture (Fritzing, diagrammes UML, ...)
-
-_Voir pour les prochaines étapes (mais déjà valider les précédentes)._
-
 ## Bibliographe et sources
 
 _Ajouter ici les sites de références (code, doc, ...) utiles, utilisés et/ou utilisables pour le projet._
