@@ -14,3 +14,5 @@ board_build.mcu = esp32
 ; change MCU frequency
 board_build.f_cpu = 240000000L
 ```
+
+Pour plus de détails sur cette mise en oeuvre, voir [ici](https://docs.platformio.org/en/latest/boards/espressif32/lolin32.html).
