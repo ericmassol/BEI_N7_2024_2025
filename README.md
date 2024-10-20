@@ -35,4 +35,12 @@ Hardware :
 
 ## Bibliographe et sources
 
-_Ajouter ici les sites de références (code, doc, ...) utiles, utilisés et/ou utilisables pour le projet._
+Documents fournis par le CNES pour la version 2023 du projet : 
+- MP 176065 xlr : Batterie lithium-ion haute densité énergétique.
+- Initiateurs 5201B03 Cisaille C5025 : Cisaille pyrotechnique pour la séparation des parachutes.
+- NEO-M8 : Module GNSS pour localisation précise via GPS, Galileo, et autres.
+- T401 OGi Modem : Modem satellite pour communication GNSS et données.
+- A3LA-R : Modem satellite Iridium pour transmission de données et voix.
+- BL-SPAP-00-88-CNES : Spécifications d'assurance produit pour les systèmes aérostatiques.
+- Exigences BEI-N7 : Règles de sécurité et tolérance aux défaillances pour le projet.
+- RNC-CNES-R-ST-12-02 : Règlement de sauvegarde pour les activités ballons du CNES.
