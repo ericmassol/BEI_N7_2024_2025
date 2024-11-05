@@ -35,7 +35,7 @@ Hardware :
   
 ## Notes sur le projet 
 
-Voir le GoogleDoc [ici](https://docs.google.com/document/d/1yEBZwkAotjjVfws7N74zM9AiAjlbJXa6hhRctntPxCY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR3wG8gkI7EsubNybudH30e5RwjPdxpOzc_iaubtv1RLq3AyE7vgB09_yl0_aem_Xj5WXP8BO6CuP0Sx3GrTsQ&tab=t.0).
+Voir le [document GoogleDoc](https://docs.google.com/document/d/1yEBZwkAotjjVfws7N74zM9AiAjlbJXa6hhRctntPxCY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR3wG8gkI7EsubNybudH30e5RwjPdxpOzc_iaubtv1RLq3AyE7vgB09_yl0_aem_Xj5WXP8BO6CuP0Sx3GrTsQ&tab=t.0).
 
 Informations disponibles sur le GDoc :
 - Choix de l'architecture
