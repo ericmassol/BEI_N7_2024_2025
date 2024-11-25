@@ -9,10 +9,11 @@ _Référents_ :
 - Mme Ngueuveu (côté ENSEEIHT)
 
 _Etudiants_ : 
+- Loïc BARTHE (roi du monde)
 - Alexandre PAUL (référent communication N7/CNES)
 - Philippe CASTERES (référent technique)
 - Eric MASSOL (Partie logicielle)
-- Loïc BARTHE
+
 
 ## Présentation du projet
 
