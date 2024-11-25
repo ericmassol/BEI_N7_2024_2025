@@ -9,7 +9,7 @@ _Référents_ :
 - Mme Ngueuveu (côté ENSEEIHT)
 
 _Etudiants_ : 
-- Loïc BARTHE (roi du monde)
+- Loïc BARTHE (roi du monde et de l'univers)
 - Alexandre PAUL (référent communication N7/CNES)
 - Philippe CASTERES (référent technique)
 - Eric MASSOL (Partie logicielle)
