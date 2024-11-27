@@ -7,6 +7,7 @@ _Projet courant du 14/10/2024 au 31/01/25_
 _Référents_ : 
 - Frédéri Mirc (côté CNES)
 - Mme Ngueuveu (côté ENSEEIHT)
+- Dominique Bonnet (côté Management de Projet) - domi.bonnet1301@gmail.com
 
 _Etudiants_ : 
 - Loïc BARTHE (roi du monde et de l'univers)
