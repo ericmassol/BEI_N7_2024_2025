@@ -7,12 +7,14 @@ _Projet courant du 14/10/2024 au 31/01/25_
 _Référents_ : 
 - Frédéri Mirc (côté CNES)
 - Mme Ngueuveu (côté ENSEEIHT)
+- Dominique Bonnet (côté Management de Projet) - domi.bonnet1301@gmail.com
 
 _Etudiants_ : 
+- Loïc BARTHE (roi du monde et de l'univers)
 - Alexandre PAUL (référent communication N7/CNES)
 - Philippe CASTERES (référent technique)
 - Eric MASSOL (Partie logicielle)
-- Loïc BARTHE
+
 
 ## Présentation du projet
 
@@ -20,6 +22,10 @@ Dans le cadre des missions aérostatiques du CNES, notre projet consiste à dév
 
 L'objectif principal est de concevoir un **système robuste à la panne avancée**, c'est-à-dire capable de prévenir tout incident grave en cas de défaillance du système. Par contre, le système **ne doit pas être robuste à la panne retardée**, car un retard dans le déventement ne devra pas engendrer de conséquence catastrophique.
 
+## Livrable du projet 
+
+Ceux de l'année dernière : 
+-[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202025/Livrables%20BEI%202023-2024) 
 ## Software et Hardware utilisé
 
 Software :
