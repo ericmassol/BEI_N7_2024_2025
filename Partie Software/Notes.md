@@ -20,4 +20,4 @@ Pour plus de détails sur cette mise en oeuvre, voir [ici](https://docs.platform
 
 ## Reflexion sur microcontroleur - Effort
 
-![Texte alternatif](Partie%20Hardware/architecture_detaille.png "Le titre de mon image")
+[Architecture détaillée](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Hardware/architecture_detaille.png)
