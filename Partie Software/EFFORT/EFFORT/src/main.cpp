@@ -1,11 +1,21 @@
 #include <Arduino.h>
-#define seuil_effort 10
-#define maf false
-#define ack_operateur false
-#define ack_separation false
+#include "sauvegardeValeur.h"
+#include <stdint.h>
 
-// put function declarations here:
-bool maf_deventement(int, bool, bool);
+const int seuil_effort = 10;
+bool maf = false;
+bool ack_operateur = false;
+bool ack_separation = false;
+
+bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
+  if (effort < seuil_effort && ack_operateur == true && ack_separation == true) { // Si l'effort est inférieur au seuil et que les deux conditions sont remplies, alors le signal de mise à feu est envoyé.
+    digitalWrite(33, HIGH);   // On envoie le signal de mise à feu.
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
 
 void setup() {
@@ -22,35 +32,30 @@ void setup() {
 void loop() {
   int effort = analogRead(32); // Cette variable est utilisée pour stocker la valeur de l'effort mesuré par le capteur.
   
-  if ack_operateur==false {
-    bool ack_operateur = digitalRead(14); // Cette variable est utilisée pour stocker l'autorisation de l'opérateur.
+  if (!ack_operateur) {
+    ack_operateur = digitalRead(14); // Cette variable est utilisée pour stocker l'autorisation de l'opérateur.
   }
 
-  if ack_separation==false {
-    bool ack_separation = digitalRead(27); // Cette variable est utilisée pour stocker l'autorisation de séparation.
+  if (!ack_separation) {
+    ack_separation = digitalRead(27); // Cette variable est utilisée pour stocker l'autorisation de séparation.
   }
 
-  if maf==false {
-    bool maf = maf_deventement(int effort, bool ack_operateur, bool ack_separation); // Cette variable indique si le parachute a été déventé.
+  if (!maf) {
+    maf = maf_deventement(effort, ack_operateur, ack_separation); // Cette variable indique si le parachute a été déventé.
   }
   
   // ACQUISITION DES DONNÉES
+  uint16_t currentAddress = 0; // Variable globale pour suivre l'adresse actuelle
+  uint16_t dataSize=32; // Taille des données à sauvegarder
+
+  sauvegarderValeur(effort, currentAddress); // Sauvegarder la valeur de l'effort
+
+  // Mettre à jour l'adresse actuelle
+  currentAddress += dataSize;
   
-
-
-
 
   delay(1000); // On attend 1 seconde avant de recommencer la boucle.
   
 }
 
 
-bool maf_deventement(int effort, bool ack_operateur, bool ack_separation) {
-  if (effort < seuil_effort && ack_operateur == true && ack_separation == true) { // Si l'effort est inférieur au seuil et que les deux conditions sont remplies, alors le signal de mise à feu est envoyé.
-    digitalWrite(33, HIGH);   // On envoie le signal de mise à feu.
-    return true;
-  }
-  else {
-    return false;
-  }
-}
