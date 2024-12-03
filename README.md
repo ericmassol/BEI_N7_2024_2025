@@ -7,7 +7,7 @@ _Projet courant du 14/10/2024 au 31/01/25_
 _Référents_ : 
 - Frédéri Mirc (côté CNES)
 - Mme Ngueuveu (côté ENSEEIHT)
-- Dominique Bonnet (côté Management de Projet) - domi.bonnet1301@gmail.com
+- [Dominique Bonnet](domi.bonnet1301@gmail.com) (côté Management de Projet)
 
 _Etudiants_ : 
 - Loïc BARTHE (roi du monde et de l'univers)
@@ -25,7 +25,8 @@ L'objectif principal est de concevoir un **système robuste à la panne avancée
 ## Livrable du projet 
 
 Ceux de l'année dernière : 
--[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202025/Livrables%20BEI%202023-2024) 
+
+-[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202024/Livrables%20BEI%202023-2024) 
 ## Software et Hardware utilisé
 
 Software :
