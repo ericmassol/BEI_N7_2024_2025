@@ -21,3 +21,5 @@ Pour plus de détails sur cette mise en oeuvre, voir [ici](https://docs.platform
 ## Reflexion sur microcontroleur - Effort
 
 ![Architecture détaillée](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Hardware/architecture_detaille.png)
+
+Au niveau de la réception des données on considère qu'on reçoit un flottant en entrée et il faudra ajouter une boucle pour vérifier les valeurs en entrées (VS NaN notamment).
