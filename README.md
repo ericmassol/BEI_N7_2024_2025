@@ -25,7 +25,8 @@ L'objectif principal est de concevoir un **système robuste à la panne avancée
 ## Livrable du projet 
 
 Ceux de l'année dernière : 
--[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202025/Livrables%20BEI%202023-2024) 
+
+-[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202024/Livrables%20BEI%202023-2024) 
 ## Software et Hardware utilisé
 
 Software :
