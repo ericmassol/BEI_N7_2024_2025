@@ -14,7 +14,7 @@ double horizontalSpeed = 0.0; // Vitesse horizontale calculée
 double lastLat = 0.0; // Dernière latitude mesurée
 double lastLng = 0.0; // Dernière longitude mesurée
 const double verticalSpeedSeuil = 0.10; // Seuil de vitesse verticale (m/s)
-const double horizontalSpeedSeuil = 2; // Seuil de vitesse horizontale (m/s)
+const double horizontalSpeedSeuil = 4; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
 unsigned long lastTime = 0; // Dernier temps mesuré
 
@@ -102,10 +102,6 @@ void loop() {
         lastLng = currentLng;
         lastTime = currentTime;
         Etat_GPS = true;
-        /*Serial.print("vitesse : ");
-        Serial.println(verticalSpeed);
-        Serial.print("Altitude : ");
-        Serial.println(gps.altitude.meters());*/
         Serial.println(
           String("Altitude : ") + gps.altitude.meters() + " m,   " +
           String("Atitude : ") + gps.location.lat() + " °,   " +
@@ -117,8 +113,6 @@ void loop() {
         /*Serial.println("GPS valide, données mises à jour.");*/
         digitalWrite(LED_GPS, HIGH);
       } else {
-        //verticalSpeed = 0;
-        //horizontalSpeed = 0;
         Etat_GPS = false;
         Serial.println("Données GPS non valides.");
       }
@@ -160,3 +154,4 @@ double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
   double c = 2 * atan2(sqrt(a), sqrt(1 - a));
   return R * c; // Distance en mètres
 }
+
