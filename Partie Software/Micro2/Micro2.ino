@@ -8,13 +8,13 @@ SoftwareSerial gpsSerial(2, 3); // RX, TX
 TinyGPSPlus gps;
 
 // Variables pour le GPS et les vitesses
-float lastAltitude = 0.0; // Dernière altitude mesurée
-float verticalSpeed = 0.0; // Vitesse verticale calculée
-float horizontalSpeed = 0.0; // Vitesse horizontale calculée
-float lastLat = 0.0; // Dernière latitude mesurée
-float lastLng = 0.0; // Dernière longitude mesurée
-const float verticalSpeedSeuil = 5; // Seuil de vitesse verticale (m/s)
-const float horizontalSpeedSeuil = 5; // Seuil de vitesse horizontale (m/s)
+double lastAltitude = 0.0; // Dernière altitude mesurée
+double verticalSpeed = 0.0; // Vitesse verticale calculée
+double horizontalSpeed = 0.0; // Vitesse horizontale calculée
+double lastLat = 0.0; // Dernière latitude mesurée
+double lastLng = 0.0; // Dernière longitude mesurée
+const double verticalSpeedSeuil = 5; // Seuil de vitesse verticale (m/s)
+const double horizontalSpeedSeuil = 5; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
 unsigned long lastTime = 0; // Dernier temps mesuré
 
@@ -149,5 +149,3 @@ float haversineDistance(float lat1, float lon1, float lat2, float lon2) {
   float c = 2 * atan2(sqrt(a), sqrt(1 - a));
   return R * c; // Distance en mètres
 }
-
-
