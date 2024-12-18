@@ -114,7 +114,7 @@ void loop() {
         digitalWrite(LED_GPS, HIGH);
       } else {
         Etat_GPS = false;
-        Serial.println("Données GPS non valides.");
+        Serial.println(String("Données GPS non valides, Satellites en communication : " ) + gps.satellites.value());
       }
     }
   }
@@ -154,4 +154,3 @@ double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
   double c = 2 * atan2(sqrt(a), sqrt(1 - a));
   return R * c; // Distance en mètres
 }
-
