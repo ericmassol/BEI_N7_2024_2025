@@ -2,7 +2,7 @@
 #include <TinyGPS++.h>
 
 // Configuration des broches RX et TX pour le GPS
-SoftwareSerial gpsSerial(2, 3); // RX, TX
+SoftwareSerial gpsSerial(A2, A3); // RX, TX
 
 // Initialisation de l'objet TinyGPS++
 TinyGPSPlus gps;
@@ -13,8 +13,8 @@ double verticalSpeed = 0.0; // Vitesse verticale calculée
 double horizontalSpeed = 0.0; // Vitesse horizontale calculée
 double lastLat = 0.0; // Dernière latitude mesurée
 double lastLng = 0.0; // Dernière longitude mesurée
-const double verticalSpeedSeuil = 5; // Seuil de vitesse verticale (m/s)
-const double horizontalSpeedSeuil = 5; // Seuil de vitesse horizontale (m/s)
+const double verticalSpeedSeuil = 0.10; // Seuil de vitesse verticale (m/s)
+const double horizontalSpeedSeuil = 2; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
 unsigned long lastTime = 0; // Dernier temps mesuré
 
@@ -23,8 +23,8 @@ unsigned long lastTime = 0; // Dernier temps mesuré
 #define LED_ETAGE1 8
 #define LED_ARMER 6
 #define LED_GPS 12
-#define AUTORISATION A5
-#define ETAGE1 A4
+#define AUTORISATION 5
+#define ETAGE1 4
 
 unsigned long startTime = 0; // Pour suivre le temps écoulé
 bool counting = false; // Indique si le chronomètre est actif
@@ -79,16 +79,16 @@ void loop() {
   // Lecture des données GPS
   while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
-      if (gps.location.isValid() && gps.altitude.isValid()) {
-        float currentAltitude = gps.altitude.meters();
-        float currentLat = gps.location.lat();
-        float currentLng = gps.location.lng();
+      if (gps.satellites.value() >= 3 && gps.location.isValid() && gps.altitude.isValid()) {
+        double currentAltitude = gps.altitude.meters();
+        double currentLat = gps.location.lat();
+        double currentLng = gps.location.lng();
         unsigned long currentTime = millis();
 
         if (lastTime != 0) {
           // Calcul de la vitesse verticale
-          float deltaAltitude = currentAltitude - lastAltitude;
-          float deltaTime = (currentTime - lastTime) / 1000.0; // En secondes
+          double deltaAltitude = currentAltitude - lastAltitude;
+          double deltaTime = (currentTime - lastTime) / 1000.0; // En secondes
 
           if (deltaTime > 0) { // Éviter la division par zéro
             verticalSpeed = abs(deltaAltitude / deltaTime);
@@ -102,8 +102,19 @@ void loop() {
         lastLng = currentLng;
         lastTime = currentTime;
         Etat_GPS = true;
+        /*Serial.print("vitesse : ");
         Serial.println(verticalSpeed);
-        Serial.println("GPS valide, données mises à jour.");
+        Serial.print("Altitude : ");
+        Serial.println(gps.altitude.meters());*/
+        Serial.println(
+          String("Altitude : ") + gps.altitude.meters() + " m,   " +
+          String("Atitude : ") + gps.location.lat() + " °,   " +
+          String("Longitude : ") + gps.location.lng() + " °,   " +
+          "Vitesse verticale : " + verticalSpeed + " m/s,   " +
+          "Vitesse horizontale : " + horizontalSpeed + " m/s,   "+
+          "Satellites en communication : "+ gps.satellites.value()
+        );
+        /*Serial.println("GPS valide, données mises à jour.");*/
         digitalWrite(LED_GPS, HIGH);
       } else {
         //verticalSpeed = 0;
@@ -136,16 +147,16 @@ void loop() {
 }
 
 // Fonction pour calculer la distance entre deux points GPS (en mètres)
-float haversineDistance(float lat1, float lon1, float lat2, float lon2) {
-  const float R = 6371000; // Rayon de la Terre en mètres
-  float dLat = radians(lat2 - lat1);
-  float dLon = radians(lon2 - lon1);
+double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
+  const double R = 6371000; // Rayon de la Terre en mètres
+  double dLat = radians(lat2 - lat1);
+  double dLon = radians(lon2 - lon1);
 
   lat1 = radians(lat1);
   lat2 = radians(lat2);
 
-  float a = sin(dLat / 2) * sin(dLat / 2) +
+  double a = sin(dLat / 2) * sin(dLat / 2) +
             cos(lat1) * cos(lat2) * sin(dLon / 2) * sin(dLon / 2);
-  float c = 2 * atan2(sqrt(a), sqrt(1 - a));
+  double c = 2 * atan2(sqrt(a), sqrt(1 - a));
   return R * c; // Distance en mètres
 }
