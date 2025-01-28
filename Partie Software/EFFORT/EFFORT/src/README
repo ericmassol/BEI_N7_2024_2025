@@ -1,0 +1,76 @@
+Code pour Microcontrôleur : Capteur d'Effort et Armement du Module
+
+### **Présentation**
+Ce projet implémente un système de contrôle pour un microcontrôleur qui gère un capteur d'effort et permet l'armement d'un module. Le système surveille un capteur d'effort, vérifie les autorisations de l'opérateur et de séparation, et déclenche le signal d'armement lorsque toutes les conditions sont réunies. De plus, il sauvegarde les valeurs d'effort en mémoire pour une analyse ultérieure.
+
+--- 
+
+### **Fonctionnalités**
+1. **Surveillance du Capteur d'Effort :**
+   - Lit la valeur d'effort depuis un capteur analogique.
+   - Compare l'effort à un seuil prédéfini (seuil_effort).
+
+2. **Logique d'Armement du Module :**
+   - Vérifie deux conditions externes :
+     - Autorisation de l'opérateur (ack_operateur) : garantit que la charge utile est en descente.
+     - Autorisation de séparation (ack_separation) : confirme la séparation avec le ballon.
+   - Déclenche le signal d'armement lorsque :
+     - L'effort est en dessous du seuil.
+     - Les deux autorisations sont validées.
+
+3. **Enregistrement des Données :** ## NON EFFECTUE DANS CETTE VERSION ##
+   - Sauvegarde les lectures du capteur d'effort en mémoire via la fonction sauvegarderValeur.
+   - Gère le débordement de mémoire en réinitialisant l'adresse d'écriture si la limite maximale (MAX_ADDRESS) est atteinte.
+
+4. **Exécution en Temps Réel :**
+   - Exécute la boucle de surveillance et de contrôle toutes les secondes.
+
+**Exigences Matérielles**
+- Microcontrôleur : Carte compatible Arduino.
+- Capteur d'Effort : Connecté à la broche 32.
+- Entrée Autorisation Opérateur : Entrée numérique sur la broche 14.
+- Entrée Autorisation Séparation : Entrée numérique sur la broche 27.
+- Sortie Signal d'Armement : Sortie numérique sur la broche 33.
+
+### **Détails du Code :**
+
+# **Variables Clés**
+- **seuil_effort** : Seuil d'effort pour déclencher le signal d'armement (par défaut : 10).
+- **maf** : Indique si le signal d'armement a été déclenché.
+- **ack_operateur** : Indique si l'autorisation de l'opérateur est accordée.
+- **ack_separation** : Indique si l'autorisation de séparation entre le ballon et la charge utile est accordée.
+
+# **Fonctions**
+1. **maf_deventement**(float effort, bool ack_operateur, bool ack_separation) :
+   - Évalue les conditions pour déclencher le signal d'armement.
+   - Active la broche de sortie si les conditions sont réunies.
+
+2. **sauvegarderValeur**(effort, currentAddress) : ## NON TESTE ICI ##
+   - Sauvegarde la valeur actuelle d'effort en mémoire à l'adresse spécifiée.
+   - Empêche le débordement de mémoire en gérant l'adresse dans la plage autorisée.
+
+# **Configuration :**
+- Configure les broches pour l'entrée du capteur, les entrées d'autorisation, et la sortie d'armement.
+- Initialise le signal d'armement à LOW.
+
+# **Boucle Principale :**
+- Lit les valeurs d'effort et les états d'autorisation.
+- Vérifie les conditions d'armement.
+- Sauvegarde les données d'effort en mémoire.
+- S'exécute toutes les secondes.
+
+# **Instructions d'Utilisation :**
+1. Connectez les composants matériels aux broches spécifiées.
+2. Téléchargez le code sur le microcontrôleur.
+3. Alimentez le système et surveillez le comportement :
+   - Assurez-vous que les valeurs d'effort et les autorisations sont correctement définies.
+   - Vérifiez que le signal d'armement est déclenché uniquement dans des conditions valides.
+
+# **Gestion de la Mémoire :**
+- currentAddress : Suit l'emplacement actuel de mémoire pour sauvegarder les données.
+- MAX_ADDRESS : Définissez cette constante en fonction de la capacité mémoire du microcontrôleur.
+
+**Remarques**
+- Assurez-vous que sauvegarderValeur et MAX_ADDRESS sont correctement implémentés et configurés pour votre microcontrôleur.
+- Modifiez seuil_effort selon les besoins de votre application.
+- Gérez la logique de débordement de mémoire en fonction de votre cas d'utilisation.
