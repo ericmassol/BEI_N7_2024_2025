@@ -8,14 +8,15 @@ SoftwareSerial gpsSerial(A2, A3); // RX, TX
 TinyGPSPlus gps;
 
 // Variables pour le GPS et les vitesses
-volatile double lastAltitude = 0.0; // Dernière altitude mesurée
-volatile double verticalSpeed = 0.0; // Vitesse verticale calculée
-volatile double horizontalSpeed = 0.0; // Vitesse horizontale calculée
-volatile double lastLat = 0.0; // Dernière latitude mesurée
-volatile double lastLng = 0.0; // Dernière longitude mesurée
+double lastAltitude = 0.0; // Dernière altitude mesurée
+double verticalSpeed = 0.0; // Vitesse verticale calculée
+double horizontalSpeed = 0.0; // Vitesse horizontale calculée
+double lastLat = 0.0; // Dernière latitude mesurée
+double lastLng = 0.0; // Dernière longitude mesurée
 const double verticalSpeedSeuil = 0.05; // Seuil de vitesse verticale (m/s)
+const double horizontalSpeedSeuil = 4; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
-volatile unsigned long lastTime = 0; // Dernier temps mesuré
+unsigned long lastTime = 0; // Dernier temps mesuré
 
 // Chronomètre et états des LEDs
 #define LED_AUTORISATION 7
@@ -25,13 +26,13 @@ volatile unsigned long lastTime = 0; // Dernier temps mesuré
 #define AUTORISATION 5
 #define ETAGE1 4
 
-volatile unsigned long startTime = 0; // Pour suivre le temps écoulé
-volatile bool counting = false; // Indique si le chronomètre est actif
-volatile bool etat_LED_AUTORISATION = false; // État de la LED_AUTORISATION
-volatile bool etat_LED_ETAGE1 = false; // État de la LED_ETAGE1
-volatile bool dernierEtat_AUTORISATION = false; // Dernier état connu du bouton AUTORISATION
-volatile bool dernierEtat_ETAGE1 = false; // Dernier état connu du bouton ETAGE1
-volatile bool Etat_GPS = false; // État du GPS (données valides ou non)
+unsigned long startTime = 0; // Pour suivre le temps écoulé
+bool counting = false; // Indique si le chronomètre est actif
+bool etat_LED_AUTORISATION = false; // État de la LED_AUTORISATION
+bool etat_LED_ETAGE1 = false; // État de la LED_ETAGE1
+bool dernierEtat_AUTORISATION = false; // Dernier état connu du bouton AUTORISATION
+bool dernierEtat_ETAGE1 = false; // Dernier état connu du bouton ETAGE1
+bool Etat_GPS = false; // État du GPS (données valides ou non)
 
 void setup() {
   pinMode(LED_AUTORISATION, OUTPUT);
@@ -91,6 +92,7 @@ void loop() {
 
           if (deltaTime > 0) { // Éviter la division par zéro
             verticalSpeed = abs(deltaAltitude / deltaTime);
+            horizontalSpeed = haversineDistance(lastLat, lastLng, currentLat, currentLng) / deltaTime;
           }
         }
 
@@ -102,23 +104,28 @@ void loop() {
         Etat_GPS = true;
         Serial.println(
           String("Altitude : ") + gps.altitude.meters() + " m,   " +
-          String("Latitude : ") + gps.location.lat() + " °,   " +
+          String("Atitude : ") + gps.location.lat() + " °,   " +
           String("Longitude : ") + gps.location.lng() + " °,   " +
           "Vitesse verticale : " + verticalSpeed + " m/s,   " +
-          "Satellites en communication : " + gps.satellites.value()
+          "Vitesse horizontale : " + horizontalSpeed + " m/s,   "+
+          "Satellites en communication : "+ gps.satellites.value()
         );
+        /*Serial.println("GPS valide, données mises à jour.");*/
         digitalWrite(LED_GPS, HIGH);
       } else {
         Etat_GPS = false;
-        Serial.println(String("Données GPS non valides, Satellites en communication : ") + gps.satellites.value());
+        Serial.println(String("Données GPS non valides, Satellites en communication : " ) + gps.satellites.value());
       }
     }
   }
 
+
   // Mise à jour des LEDs
-  digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil) ? HIGH : LOW);
+  ////  digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil && horizontalSpeed < horizontalSpeedSeuil) ? HIGH : LOW);
+  digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil ) ? HIGH : LOW);
 
   // Vérification des conditions pour LED_ARMER
+  ////  if (etat_LED_AUTORISATION && etat_LED_ETAGE1 && Etat_GPS && verticalSpeed < verticalSpeedSeuil && horizontalSpeed < horizontalSpeedSeuil) 
   if (etat_LED_AUTORISATION && etat_LED_ETAGE1 && Etat_GPS && verticalSpeed < verticalSpeedSeuil) {
     if (!counting) {
       startTime = millis();
@@ -148,3 +155,9 @@ double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
   double c = 2 * atan2(sqrt(a), sqrt(1 - a));
   return R * c; // Distance en mètres
 }
+
+// Attention : Ce code contient une erreur d'acquisition due au calcul de la position sur le plan horizontal (x et y) ainsi qu'aux formules utilisées pour les déterminer. L'utilisation de la fonction atan2 peut également provoquer des erreurs.
+// Les positions x et y sont calculées en fonction de la latitude et de la longitude. Cependant, lorsque nous sommes immobiles, la formule utilisée pour calculer la vitesse sur le plan horizontal peut entraîner des erreurs. 
+// Ces erreurs sont dues aux imprécisions des mesures relevées pour x et y ainsi qu'au calcul de la vitesse horizontale. Elles surviennent environ toutes les trois acquisitions. Nous avons tenté de les résoudre, mais nous avons manqué de temps.
+// Comme cette condition n'est pas nécessaire (puisque nous nous intéressons uniquement à la vitesse verticale), il est recommandé de la retirer avant d'exécuter le code.
+// Les lignes124 et 128 sont commenter.

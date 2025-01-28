@@ -3,12 +3,12 @@
 #include <stdint.h>
 
 // Définir le seuil d'effort pour déclencher la mise à feu
-const int seuil_effort = 10;
+const int seuil_effort = 10; // Ici le seuil est arbitraire car on ne possède pas de données réalistes
 
 // Variables d'état pour la mise à feu et les autorisations
-volatile bool maf = false;            // Mise à feu (volatile pour éviter les optimisations indésirables)
-volatile bool ack_operateur = false;  // Autorisation de l'opérateur
-volatile bool ack_separation = false; // Autorisation de séparation
+volatile bool maf = false;            // Booléen de mise à feu 
+volatile bool ack_operateur = false;  // Autorisation de l'opérateur une fois la charge utile en descente
+volatile bool ack_separation = false; // Autorisation de séparation obtenu lors de la séparation avec le ballon
 
 // Fonction pour vérifier les conditions de mise à feu
 bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
@@ -22,7 +22,7 @@ bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
 }
 
 void setup() {
-  // Configuration des ports d'entrée
+  // Configuration des ports d'entrée pour une carte Arduino Uno
   pinMode(32, INPUT);  // Capteur d'effort
   pinMode(14, INPUT);  // Autorisation opérateur
   pinMode(27, INPUT);  // Autorisation séparation
