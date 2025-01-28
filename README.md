@@ -34,15 +34,6 @@ Hardware :
 - Capteur GPS : Pour suivre la position de la charge utile.
 - LED Rouge : Utilisée pour simuler la cisaille pyrotechnique (intégrée sur la carte).
 - Autres composants à définir selon l'évolution des besoins du projet.
-  
-## Notes sur le projet 
-
-Voir le [document GoogleDoc](https://docs.google.com/document/d/1yEBZwkAotjjVfws7N74zM9AiAjlbJXa6hhRctntPxCY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR3wG8gkI7EsubNybudH30e5RwjPdxpOzc_iaubtv1RLq3AyE7vgB09_yl0_aem_Xj5WXP8BO6CuP0Sx3GrTsQ&tab=t.0).
-
-Informations disponibles sur le GDoc :
-- Choix de l'architecture
-- Cahier de bord (détails par session des discussions, avancées, ...)
-- Scénario et résolution/propositions
 
 ## Livrables
 
