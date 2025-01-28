@@ -22,11 +22,6 @@ Dans le cadre des missions aérostatiques du CNES, notre projet consiste à dév
 
 L'objectif principal est de concevoir un **système robuste à la panne avancée**, c'est-à-dire capable de prévenir tout incident grave en cas de défaillance du système. Par contre, le système **ne doit pas être robuste à la panne retardée**, car un retard dans le déventement ne devra pas engendrer de conséquence catastrophique.
 
-## Livrable du projet 
-
-Ceux de l'année dernière : 
-
--[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202024/Livrables%20BEI%202023-2024) 
 ## Software et Hardware utilisé
 
 Software :
@@ -38,20 +33,6 @@ Hardware :
 - Capteur de pression : Pour mesurer la pression atmosphérique et déclencher le déventement.
 - Capteur GPS : Pour suivre la position de la charge utile.
 - LED Rouge : Utilisée pour simuler la cisaille pyrotechnique (intégrée sur la carte).
-- Autres composants à définir selon l'évolution des besoins du projet.
-  
-## Notes sur le projet 
-
-Voir le [document GoogleDoc](https://docs.google.com/document/d/1yEBZwkAotjjVfws7N74zM9AiAjlbJXa6hhRctntPxCY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR3wG8gkI7EsubNybudH30e5RwjPdxpOzc_iaubtv1RLq3AyE7vgB09_yl0_aem_Xj5WXP8BO6CuP0Sx3GrTsQ&tab=t.0).
-
-Informations disponibles sur le GDoc :
-- Choix de l'architecture
-- Cahier de bord (détails par session des discussions, avancées, ...)
-- Scénario et résolution/propositions
-
-## Livrables
-
-Voir le [document Overleaf](https://www.overleaf.com/project/6729cfde7fe7d59a85ce2051).
 
 ## Bibliographe et sources
 
