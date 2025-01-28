@@ -83,7 +83,7 @@ void loop() {
         // La première conditions permet de vérifier le nombre de satellites en communication, en réaliter le GPS en a besoin de 4 pour fonctionner correctement.
         // La deuxième condition vérifie si les données de localisation sont valides
         // La troisième condition vérifie si les données d'altitude sont valides
-        
+
         double currentAltitude = gps.altitude.meters(); // Altitude actuelle
         double currentLat = gps.location.lat(); //  Latitude actuelle
         double currentLng = gps.location.lng(); //  Longitude actuelle
@@ -160,8 +160,8 @@ double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
   return R * c; // Distance en mètres
 }
 
-// Attention : Ce code contient une erreur d'acquisition due au calcul de la position sur le plan horizontal (x et y) ainsi qu'aux formules utilisées pour les déterminer. L'utilisation de la fonction atan2 peut également provoquer des erreurs.
+// Attention : Ce code contient une erreur d'acquisition due au calcul de la position sur le plan horizontal (x et y) ainsi qu'aux formules utilisées pour les déterminer. L'utilisation de la fonction atan2 provoque des erreurs du a la division.
 // Les positions x et y sont calculées en fonction de la latitude et de la longitude. Cependant, lorsque nous sommes immobiles, la formule utilisée pour calculer la vitesse sur le plan horizontal peut entraîner des erreurs. 
 // Ces erreurs sont dues aux imprécisions des mesures relevées pour x et y ainsi qu'au calcul de la vitesse horizontale. Elles surviennent environ toutes les trois acquisitions. Nous avons tenté de les résoudre, mais nous avons manqué de temps.
 // Comme cette condition n'est pas nécessaire (puisque nous nous intéressons uniquement à la vitesse verticale), il est recommandé de la retirer avant d'exécuter le code.
-// Les lignes124 et 128 sont commenter.
+// Les lignes 128 et 132 sont commenter.
