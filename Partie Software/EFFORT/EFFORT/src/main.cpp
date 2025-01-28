@@ -2,60 +2,67 @@
 #include "sauvegardeValeur.h"
 #include <stdint.h>
 
+// Définir le seuil d'effort pour déclencher la mise à feu
 const int seuil_effort = 10;
-bool maf = false;
-bool ack_operateur = false;
-bool ack_separation = false;
 
+// Variables d'état pour la mise à feu et les autorisations
+volatile bool maf = false;            // Mise à feu (volatile pour éviter les optimisations indésirables)
+volatile bool ack_operateur = false;  // Autorisation de l'opérateur
+volatile bool ack_separation = false; // Autorisation de séparation
+
+// Fonction pour vérifier les conditions de mise à feu
 bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
-  if (effort < seuil_effort && ack_operateur == true && ack_separation == true) { // Si l'effort est inférieur au seuil et que les deux conditions sont remplies, alors le signal de mise à feu est envoyé.
-    digitalWrite(33, HIGH);   // On envoie le signal de mise à feu.
+  // Si l'effort est inférieur au seuil et que les deux autorisations sont accordées
+  if (effort < seuil_effort && ack_operateur && ack_separation) {
+    digitalWrite(33, HIGH); // Envoyer le signal de mise à feu
     return true;
-  }
-  else {
+  } else {
     return false;
   }
 }
 
-
 void setup() {
-  pinMode(32, INPUT); // Ce port est le port réel (numéro sur la carte). Il est utilisé pour relever les données du capteur d'effort.
-  pinMode(14,INPUT); // Port d'autorisation opérateur.
-  pinMode(27,INPUT); // Port d'autorisation séparation.
+  // Configuration des ports d'entrée
+  pinMode(32, INPUT);  // Capteur d'effort
+  pinMode(14, INPUT);  // Autorisation opérateur
+  pinMode(27, INPUT);  // Autorisation séparation
 
-  pinMode(33, OUTPUT); // Ce port est le port réel (numéro sur la carte). Il est utilisé pour transmettre le signal de mise à feu.  
-  
-  digitalWrite(33, LOW); // Le signal de mise à feu est initialisé à 0.
-  
+  // Configuration du port de sortie pour la mise à feu
+  pinMode(33, OUTPUT);
+  digitalWrite(33, LOW); // Initialiser le signal de mise à feu à LOW
 }
 
 void loop() {
-  int effort = analogRead(32); // Cette variable est utilisée pour stocker la valeur de l'effort mesuré par le capteur.
-  
+  // Lire la valeur de l'effort mesuré par le capteur
+  int effort = analogRead(32);
+
+  // Lire l'état des autorisations si elles ne sont pas déjà accordées
   if (!ack_operateur) {
-    ack_operateur = digitalRead(14); // Cette variable est utilisée pour stocker l'autorisation de l'opérateur.
+    ack_operateur = digitalRead(14); // Autorisation opérateur
   }
 
   if (!ack_separation) {
-    ack_separation = digitalRead(27); // Cette variable est utilisée pour stocker l'autorisation de séparation.
+    ack_separation = digitalRead(27); // Autorisation séparation
   }
 
+  // Vérifier les conditions de mise à feu si elle n'a pas déjà été déclenchée
   if (!maf) {
-    maf = maf_deventement(effort, ack_operateur, ack_separation); // Cette variable indique si le parachute a été déventé.
+    maf = maf_deventement(effort, ack_operateur, ack_separation);
   }
-  
-  // ACQUISITION DES DONNÉES
-  uint16_t currentAddress = 0; // Variable globale pour suivre l'adresse actuelle
-  uint16_t dataSize=32; // Taille des données à sauvegarder
 
-  sauvegarderValeur(effort, currentAddress); // Sauvegarder la valeur de l'effort
+  // Sauvegarder la valeur de l'effort
+  static uint16_t currentAddress = 0; // Adresse actuelle pour la sauvegarde (static pour conserver la valeur entre les appels)
+  const uint16_t dataSize = 32;      // Taille des données à sauvegarder
 
-  // Mettre à jour l'adresse actuelle
-  currentAddress += dataSize;
-  
+  // Vérifier que l'adresse ne déborde pas (sécurité contre les buffer overflows)
+  if (currentAddress + dataSize <= MAX_ADDRESS) { // MAX_ADDRESS doit être défini selon la mémoire disponible
+    sauvegarderValeur(effort, currentAddress); // Sauvegarder la valeur
+    currentAddress += dataSize; // Mettre à jour l'adresse pour la prochaine sauvegarde
+  } else {
+    // Gérer le débordement de mémoire (par exemple, réinitialiser l'adresse ou signaler une erreur)
+    currentAddress = 0; // Réinitialisation de l'adresse (ou autre logique de gestion d'erreur)
+  }
 
-  delay(1000); // On attend 1 seconde avant de recommencer la boucle.
-  
+  // Attendre 1 seconde avant de recommencer la boucle
+  delay(1000);
 }
-
-
