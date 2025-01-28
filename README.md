@@ -22,11 +22,6 @@ Dans le cadre des missions aérostatiques du CNES, notre projet consiste à dév
 
 L'objectif principal est de concevoir un **système robuste à la panne avancée**, c'est-à-dire capable de prévenir tout incident grave en cas de défaillance du système. Par contre, le système **ne doit pas être robuste à la panne retardée**, car un retard dans le déventement ne devra pas engendrer de conséquence catastrophique.
 
-## Livrable du projet 
-
-Ceux de l'année dernière : 
-
--[Livrable 2023/2024](https://github.com/ericmassol/BEI_N7_2024_2025/tree/main/.Documents%202024/Livrables%20BEI%202023-2024) 
 ## Software et Hardware utilisé
 
 Software :
