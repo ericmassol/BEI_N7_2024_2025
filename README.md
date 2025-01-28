@@ -33,11 +33,6 @@ Hardware :
 - Capteur de pression : Pour mesurer la pression atmosphérique et déclencher le déventement.
 - Capteur GPS : Pour suivre la position de la charge utile.
 - LED Rouge : Utilisée pour simuler la cisaille pyrotechnique (intégrée sur la carte).
-- Autres composants à définir selon l'évolution des besoins du projet.
-
-## Livrables
-
-Voir le [document Overleaf](https://www.overleaf.com/project/6729cfde7fe7d59a85ce2051).
 
 ## Bibliographe et sources
 
