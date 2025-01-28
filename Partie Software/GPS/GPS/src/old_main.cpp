@@ -16,7 +16,7 @@ double lastLng = 0.0; // Dernière longitude mesurée
 const double verticalSpeedSeuil = 0.05; // Seuil de vitesse verticale (m/s)
 const double horizontalSpeedSeuil = 4; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
-unsigned long lastTime = 0; // Dernier temps mesuré
+volatile unsigned long lastTime = 0; // Dernier temps mesuré
 
 // Chronomètre et états des LEDs
 #define LED_AUTORISATION 7
@@ -26,7 +26,7 @@ unsigned long lastTime = 0; // Dernier temps mesuré
 #define AUTORISATION 5
 #define ETAGE1 4
 
-unsigned long startTime = 0; // Pour suivre le temps écoulé
+volatile unsigned long startTime = 0; // Pour suivre le temps écoulé
 bool counting = false; // Indique si le chronomètre est actif
 bool etat_LED_AUTORISATION = false; // État de la LED_AUTORISATION
 bool etat_LED_ETAGE1 = false; // État de la LED_ETAGE1
@@ -118,7 +118,6 @@ void loop() {
       }
     }
   }
-
 
   // Mise à jour des LEDs
   ////  digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil && horizontalSpeed < horizontalSpeedSeuil) ? HIGH : LOW);
