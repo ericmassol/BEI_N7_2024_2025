@@ -1,1 +1,29 @@
+# Ignorer fichiers inutiles
 Partie Software/.vscode/*
+.DS_Store
+
+# Ignorer les fichiers de build C++
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+*.so
+*.dll
+*.dSYM/
+*.exe.stackdump
+
+# Ignorer les fichiers de build Arduino
+*.elf
+*.hex
+*.bin
+*.eep
+*.map
+
+# Ignorer les fichiers de configuration Arduino
+*.ino.*
+*.cpp.*
+*.h.*
+*.ino.cpp
+*.ino.h
