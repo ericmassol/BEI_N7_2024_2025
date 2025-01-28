@@ -80,10 +80,14 @@ void loop() {
   while (gpsSerial.available() > 0) {
     if (gps.encode(gpsSerial.read())) {
       if (gps.satellites.value() >= 3 && gps.location.isValid() && gps.altitude.isValid()) {
-        double currentAltitude = gps.altitude.meters();
-        double currentLat = gps.location.lat();
-        double currentLng = gps.location.lng();
-        unsigned long currentTime = millis();
+        // La première conditions permet de vérifier le nombre de satellites en communication, en réaliter le GPS en a besoin de 4 pour fonctionner correctement.
+        // La deuxième condition vérifie si les données de localisation sont valides
+        // La troisième condition vérifie si les données d'altitude sont valides
+        
+        double currentAltitude = gps.altitude.meters(); // Altitude actuelle
+        double currentLat = gps.location.lat(); // Latitude actuelle
+        double currentLng = gps.location.lng(); //  Longitude actuelle
+        unsigned long currentTime = millis(); // Temps actuel
 
         if (lastTime != 0) {
           // Calcul de la vitesse verticale
@@ -113,6 +117,7 @@ void loop() {
         /*Serial.println("GPS valide, données mises à jour.");*/
         digitalWrite(LED_GPS, HIGH);
       } else {
+        // Cette conditions permet de vérifier et d'empecher l'activation de startTime et donc LED_AMER si les données ne sont pas valides
         Etat_GPS = false;
         Serial.println(String("Données GPS non valides, Satellites en communication : " ) + gps.satellites.value());
       }
