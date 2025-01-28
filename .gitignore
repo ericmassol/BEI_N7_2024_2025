@@ -1,6 +1,6 @@
 # Ignorer fichiers inutiles
-Partie Software/.vscode/*
-.DS_Store
+**/.vscode/
+**/.DS_Store
 
 # Ignorer les fichiers de build C++
 *.o
