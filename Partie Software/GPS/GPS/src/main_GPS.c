@@ -18,7 +18,7 @@ const double horizontalSpeedSeuil = 4; // Seuil de vitesse horizontale (m/s)
 const int timeSeuil = 10000; // Temps seuil en millisecondes
 volatile unsigned long lastTime = 0; // Dernier temps mesuré
 
-// Chronomètre et états des LEDs
+// Définition des ports utilisés
 #define PIN_LED_OPERATEUR 8
 #define PIN_LED_SEPARATION 7
 #define PIN_ARMEMENT 6
@@ -26,6 +26,7 @@ volatile unsigned long lastTime = 0; // Dernier temps mesuré
 #define PIN_ACK_OPERATEUR 4
 #define PIN_LED_SEPARATION 5
 
+// Variables globales et initialisation
 volatile unsigned long startTime = 0; // Pour suivre le temps écoulé
 volatile bool counting = false; // Indique si le chronomètre est actif
 volatile bool etat_PIN_LED_OPERATEUR = false; // État de la PIN_LED_OPERATEUR
@@ -35,6 +36,7 @@ volatile bool dernierEtat_PIN_LED_SEPARATION = false; // Dernier état connu du 
 volatile bool Etat_GPS = false; // État du GPS (données valides ou non)
 
 void setup() {
+  // Configuration des ports en entrée et en sortie
   pinMode(PIN_LED_OPERATEUR, OUTPUT);
   pinMode(PIN_LED_SEPARATION, OUTPUT);
   pinMode(PIN_ARMEMENT, OUTPUT);
