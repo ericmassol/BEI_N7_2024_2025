@@ -1,18 +1,26 @@
-# Notes et remarques sur la partie software
+# 📌 Notes et Remarques sur la Partie Software
 
-## Indications sur la partie 'EFFORT' du code
+---
 
-Voir ce document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md) pour les informations sur la partie EFFORT.
+## 📌 Indications sur la partie **EFFORT** du code
 
-## Indications sur la partie 'GPS' du code
+Voir ce document pour les informations sur la partie **EFFORT** :  
+➡️ [README - EFFORT](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md)
 
-Voir ce document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/GPS/GPS/src/README.md) pour les informations sur la partie GPS.
+---
 
-## Aide pour Platform.io
+## 📌 Indications sur la partie **GPS** du code
 
-Nécessité de commencer le code en définissant l'environnement :
+Voir ce document pour les informations sur la partie **GPS** :  
+➡️ [README - GPS](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/GPS/GPS/src/README.md)
 
-```
+---
+
+## ⚙️ Aide pour **Platform.io**
+
+Il est nécessaire de commencer le code en définissant l'environnement **Platform.io** :
+
+```ini
 [env:lolin32_lite]
 platform = espressif32
 board = lolin32_lite
