@@ -47,7 +47,7 @@ Dans le cadre des missions **aérostatiques du CNES**, ce projet vise à concevo
 
 ## 📚 Bibliographie et Sources
 
-📂 **Documents fournis par le CNES - Version 2023** :
+📂 **Documents fournis par le CNES** :
 - **MP 176065 XLR** : Batterie lithium-ion haute densité énergétique.
 - **Initiateurs 5201B03 - Cisaille C5025** : Cisaille pyrotechnique pour séparation des parachutes.
 - **NEO-M8** : Module GNSS pour localisation précise (GPS, Galileo, etc.).
