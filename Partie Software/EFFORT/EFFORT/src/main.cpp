@@ -24,12 +24,17 @@ bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
 void setup() {
   // Configuration des ports d'entrée pour une carte Arduino Uno
   pinMode(A0, INPUT);  // Capteur d'effort
-  pinMode(7, INPUT);  // Autorisation opérateur
-  pinMode(8, INPUT);  // Autorisation séparation
+  pinMode(4, INPUT);  // Autorisation opérateur
+  pinMode(5, INPUT);  // Autorisation séparation
 
   // Configuration du port de sortie pour la mise à feu
   pinMode(6, OUTPUT);
   digitalWrite(6, LOW); // Initialiser le signal de mise à feu à LOW
+  
+
+  // Configuration des ports de sortie pour les LEDs
+  pinMode(7, OUTPUT); // LED 7 pour l'autorisation de séparation
+  pinMode(8, OUTPUT); // LED 8 pour l'autorisation opérateur
 }
 
 void loop() {
@@ -38,11 +43,13 @@ void loop() {
 
   // Lire l'état des autorisations si elles ne sont pas déjà accordées
   if (!ack_operateur) {
-    ack_operateur = digitalRead(7); // Autorisation opérateur
+    ack_operateur = digitalRead(4); // Autorisation opérateur
+    digitalWrite(8, ack_operateur); // Allumer la LED 8 si l'autorisation est accordée
   }
 
   if (!ack_separation) {
-    ack_separation = digitalRead(8); // Autorisation séparation
+    ack_separation = digitalRead(5); // Autorisation séparation
+    digitalWrite(7, ack_separation); // Allumer la LED 7 si l'autorisation de separation est accordée
   }
 
   // Vérifier les conditions de mise à feu si elle n'a pas déjà été déclenchée
