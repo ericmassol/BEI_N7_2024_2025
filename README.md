@@ -12,10 +12,10 @@
 - **[Dominique Bonnet](mailto:domi.bonnet1301@gmail.com)** _(Management de Projet)_
 
 ### 🔹 Étudiants :
-- **Loïc Barthe** _(Roi du monde et de l'univers)_
-- **Alexandre Paul** _(Référent communication N7/CNES)_
 - **Philippe Casteres** _(Référent technique)_
-- **Eric Massol** _(Partie logicielle)_
+- **Alexandre Paul** _(Référent communication N7/CNES)_
+- **Loïc Barthe**
+- **Eric Massol**
 
 ---
 
