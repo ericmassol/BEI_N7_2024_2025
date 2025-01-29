@@ -14,7 +14,7 @@ volatile bool ack_separation = false; // Autorisation de séparation obtenu lors
 bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
   // Si l'effort est inférieur au seuil et que les deux autorisations sont accordées
   if (effort < seuil_effort && ack_operateur && ack_separation) {
-    digitalWrite(33, HIGH); // Envoyer le signal de mise à feu
+    digitalWrite(6, HIGH); // Envoyer le signal de mise à feu
     return true;
   } else {
     return false;
@@ -23,26 +23,26 @@ bool maf_deventement(float effort, bool ack_operateur, bool ack_separation) {
 
 void setup() {
   // Configuration des ports d'entrée pour une carte Arduino Uno
-  pinMode(32, INPUT);  // Capteur d'effort
-  pinMode(14, INPUT);  // Autorisation opérateur
-  pinMode(27, INPUT);  // Autorisation séparation
+  pinMode(A0, INPUT);  // Capteur d'effort
+  pinMode(7, INPUT);  // Autorisation opérateur
+  pinMode(8, INPUT);  // Autorisation séparation
 
   // Configuration du port de sortie pour la mise à feu
-  pinMode(33, OUTPUT);
-  digitalWrite(33, LOW); // Initialiser le signal de mise à feu à LOW
+  pinMode(6, OUTPUT);
+  digitalWrite(6, LOW); // Initialiser le signal de mise à feu à LOW
 }
 
 void loop() {
   // Lire la valeur de l'effort mesuré par le capteur
-  int effort = analogRead(32);
+  int effort = analogRead(A0);
 
   // Lire l'état des autorisations si elles ne sont pas déjà accordées
   if (!ack_operateur) {
-    ack_operateur = digitalRead(14); // Autorisation opérateur
+    ack_operateur = digitalRead(7); // Autorisation opérateur
   }
 
   if (!ack_separation) {
-    ack_separation = digitalRead(27); // Autorisation séparation
+    ack_separation = digitalRead(8); // Autorisation séparation
   }
 
   // Vérifier les conditions de mise à feu si elle n'a pas déjà été déclenchée
@@ -50,8 +50,7 @@ void loop() {
     maf = maf_deventement(effort, ack_operateur, ack_separation);
   }
 
-  // ! Unfortunately we were not able to test the following code to test saving in the memory.
-  /// Sauvegarder la valeur de l'effort
+  // // Sauvegarder la valeur de l'effort
   // static uint16_t currentAddress = 0; // Adresse actuelle pour la sauvegarde (static pour conserver la valeur entre les appels)
   // const uint16_t dataSize = 32;      // Taille des données à sauvegarder
 

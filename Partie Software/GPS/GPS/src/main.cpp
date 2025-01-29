@@ -21,7 +21,7 @@ volatile unsigned long lastTime = 0; // Dernier temps mesuré
 // Chronomètre et états des LEDs
 #define LED_AUTORISATION 7
 #define LED_ETAGE1 8
-#define LED_ARMER 6
+#define LED_ARME 6
 #define LED_GPS 12
 #define AUTORISATION 5
 #define ETAGE1 4
@@ -31,13 +31,13 @@ volatile bool counting = false; // Indique si le chronomètre est actif
 volatile bool etat_LED_AUTORISATION = false; // État de la LED_AUTORISATION
 volatile bool etat_LED_ETAGE1 = false; // État de la LED_ETAGE1
 volatile bool dernierEtat_AUTORISATION = false; // Dernier état connu du bouton AUTORISATION
-volatile bool dernierEtat_ETAGE1 = false; // Dernier état connu du bouton ETAGE1, envoie un true quand le deuxième étage s'est séparé du premier.
+volatile bool dernierEtat_ETAGE1 = false; // Dernier état connu du bouton ETAGE1
 volatile bool Etat_GPS = false; // État du GPS (données valides ou non)
 
 void setup() {
   pinMode(LED_AUTORISATION, OUTPUT);
   pinMode(LED_ETAGE1, OUTPUT);
-  pinMode(LED_ARMER, OUTPUT);
+  pinMode(LED_ARME, OUTPUT);
   pinMode(LED_GPS, OUTPUT);
   pinMode(AUTORISATION, INPUT);
   pinMode(ETAGE1, INPUT);
@@ -45,7 +45,7 @@ void setup() {
   // Initialisation des LEDs à LOW (éteintes)
   digitalWrite(LED_AUTORISATION, LOW);
   digitalWrite(LED_ETAGE1, LOW);
-  digitalWrite(LED_ARMER, LOW);
+  digitalWrite(LED_ARME, LOW);
   digitalWrite(LED_GPS, LOW);
 
   // Initialisation du port série
@@ -60,7 +60,7 @@ void loop() {
   bool bouton_AUTORISATION = digitalRead(AUTORISATION);
   bool bouton_ETAGE1 = digitalRead(ETAGE1);
 
-  // Basculer l'état de LED_AUTORISATION lorsqu'il recoie un AUTORISATION de l'operateur
+  // Basculer l'état de LED_AUTORISATION lors d'un appui sur AUTORISATION
   if (bouton_AUTORISATION && !dernierEtat_AUTORISATION) {
     etat_LED_AUTORISATION = !etat_LED_AUTORISATION; // Inverser l'état
     digitalWrite(LED_AUTORISATION, etat_LED_AUTORISATION ? HIGH : LOW);
@@ -68,7 +68,7 @@ void loop() {
   }
   dernierEtat_AUTORISATION = bouton_AUTORISATION;
 
-  // Basculer l'état de LED_ETAGE1 lorsque l'ETAGE 2 se s'épare de l'ETAGE1
+  // Basculer l'état de LED_ETAGE1 lors d'un appui sur ETAGE1
   if (bouton_ETAGE1 && !dernierEtat_ETAGE1) {
     etat_LED_ETAGE1 = !etat_LED_ETAGE1; // Inverser l'état
     digitalWrite(LED_ETAGE1, etat_LED_ETAGE1 ? HIGH : LOW);
@@ -128,28 +128,21 @@ void loop() {
   ////  digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil && horizontalSpeed < horizontalSpeedSeuil) ? HIGH : LOW);
   digitalWrite(LED_GPS, (Etat_GPS && verticalSpeed < verticalSpeedSeuil) ? HIGH : LOW);
 
-  // Vérification des conditions pour LED_ARMER
+  // Vérification des conditions pour LED_ARME
   ////  if (etat_LED_AUTORISATION && etat_LED_ETAGE1 && Etat_GPS && verticalSpeed < verticalSpeedSeuil && horizontalSpeed < horizontalSpeedSeuil) 
   if (etat_LED_AUTORISATION && etat_LED_ETAGE1 && Etat_GPS && verticalSpeed < verticalSpeedSeuil) {
-    // Premiere condition AUTORISATION de l'opérateur
-    // Deuxième condition ETAGE1 s'est séparé de l'ETAGE2
-    // Troisième condition GPS valide
-    // Quatrième condition vitesse verticale inférieure au seuil
-    // On lance le chronomètre
     if (!counting) {
       startTime = millis();
       counting = true;
     }
     if (millis() - startTime >= timeSeuil) {
-      // Si le temps écoulé est supérieur au seuil, on active la LED_ARMER
-      digitalWrite(LED_ARMER, HIGH);
-      Serial.println("LED_ARMER activée (conditions remplies).");
+      digitalWrite(LED_ARME, HIGH);
+      Serial.println("LED_ARME activée (conditions remplies).");
     }
   } else {
-    // si l'un des quatres conditions n'est pas remplie, on réinitialise le chronomètre
     counting = false;
     startTime = 0;
-    digitalWrite(LED_ARMER, LOW);
+    digitalWrite(LED_ARME, LOW);
   }
 }
 
