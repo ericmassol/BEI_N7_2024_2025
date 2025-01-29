@@ -50,18 +50,19 @@ void loop() {
     maf = maf_deventement(effort, ack_operateur, ack_separation);
   }
 
-  // Sauvegarder la valeur de l'effort
-  static uint16_t currentAddress = 0; // Adresse actuelle pour la sauvegarde (static pour conserver la valeur entre les appels)
-  const uint16_t dataSize = 32;      // Taille des données à sauvegarder
+  // ! Unfortunately we were not able to test the following code to test saving in the memory.
+  /// Sauvegarder la valeur de l'effort
+  // static uint16_t currentAddress = 0; // Adresse actuelle pour la sauvegarde (static pour conserver la valeur entre les appels)
+  // const uint16_t dataSize = 32;      // Taille des données à sauvegarder
 
-  // Vérifier que l'adresse ne déborde pas (sécurité contre les buffer overflows)
-  if (currentAddress + dataSize <= MAX_ADDRESS) { // MAX_ADDRESS doit être défini selon la mémoire disponible
-    sauvegarderValeur(effort, currentAddress); // Sauvegarder la valeur
-    currentAddress += dataSize; // Mettre à jour l'adresse pour la prochaine sauvegarde
-  } else {
-    // Gérer le débordement de mémoire (par exemple, réinitialiser l'adresse ou signaler une erreur)
-    currentAddress = 0; // Réinitialisation de l'adresse (ou autre logique de gestion d'erreur)
-  }
+  // // Vérifier que l'adresse ne déborde pas (sécurité contre les buffer overflows)
+  // if (currentAddress + dataSize <= MAX_ADDRESS) { // MAX_ADDRESS doit être défini selon la mémoire disponible
+  //   sauvegarderValeur(effort, currentAddress); // Sauvegarder la valeur
+  //   currentAddress += dataSize; // Mettre à jour l'adresse pour la prochaine sauvegarde
+  // } else {
+  //   // Gérer le débordement de mémoire (par exemple, réinitialiser l'adresse ou signaler une erreur)
+  //   currentAddress = 0; // Réinitialisation de l'adresse (ou autre logique de gestion d'erreur)
+  // }
 
   // Attendre 1 seconde avant de recommencer la boucle
   delay(1000);
