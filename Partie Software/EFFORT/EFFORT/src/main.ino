@@ -27,7 +27,7 @@ bool maf_deventement(float effort, bool ack_operateur, bool ack_separation, int 
   {
     if (temps > TEMPS_ATTENTE)
     {
-      digitalWrite(PIN_MISE_A_FEU, HIGH); // Envoyer le signal de mise à feu
+      digitalWrite(PIN_MISE_A_FEU, HIGH);
       return true;
     }
     else
@@ -69,11 +69,12 @@ void loop()
   temps++;
 
   // Lire l'état des autorisations et afficher sur les LEDs de debug
+  // Permet de remettre à 0 si soucis de communication
   ack_operateur = digitalRead(PIN_ACK_OPERATEUR);
-  digitalWrite(PIN_LED_OPERATEUR, ack_operateur); // LED ON si autorisation opérateur est accordée
+  digitalWrite(PIN_LED_OPERATEUR, ack_operateur);
 
   ack_separation = digitalRead(PIN_ACK_SEPARATION);
-  digitalWrite(PIN_LED_SEPARATION, ack_separation); // LED ON si autorisation séparation est accordée
+  digitalWrite(PIN_LED_SEPARATION, ack_separation);
 
   // Vérifier les conditions de mise à feu
   maf = maf_deventement(effort, ack_operateur, ack_separation, temps);
