@@ -4,6 +4,10 @@
 
 Voir le document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md) pour les informations.
 
+## Indications sur la partie 'EFFORT' du code
+
+Voir le document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/GPS/GPS/src/README.md) pour les informations.
+
 ## Aide pour Platform.io
 
 Nécessité de commencer le code en définissant l'environnement :
