@@ -2,11 +2,11 @@
 
 ## Indications sur la partie 'EFFORT' du code
 
-Voir le document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md) pour les informations.
+Voir ce document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md) pour les informations sur la partie EFFORT.
 
-## Indications sur la partie 'EFFORT' du code
+## Indications sur la partie 'GPS' du code
 
-Voir le document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/GPS/GPS/src/README.md) pour les informations.
+Voir ce document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/GPS/GPS/src/README.md) pour les informations sur la partie GPS.
 
 ## Aide pour Platform.io
 
