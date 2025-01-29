@@ -26,3 +26,7 @@ Au niveau de la réception des données on considère qu'on reçoit un flottant 
 
 Exemple utilisation biblio AdafruitFRAM_I2C 
 https://registry.platformio.org/libraries/adafruit/Adafruit%20FRAM%20I2C/examples/Generic_I2C_EEPROM/Generic_I2C_EEPROM.ino
+
+## Indications sur la partie 'EFFORT' du code
+
+Voir le document [README](https://github.com/ericmassol/BEI_N7_2024_2025/blob/main/Partie%20Software/EFFORT/EFFORT/src/README.md) pour les informations.
